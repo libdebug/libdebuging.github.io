@@ -14,16 +14,32 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f4f4f9;
+            background-color: #ffffef;
             font-family: "Nunito", sans-serif;
         }
         .container {
-            text-align: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+        .icons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .logo {
             max-width: 600px;
             margin-bottom: 20px;
+            display: none;   /* Hide initially */
         }
+        .logo-vertical
+        {
+            max-height: 300px;
+            margin-bottom: 20px;
+            display: none;   /* Hide initially */
+        }
+        .logo { display: block; } /* Show horizontal logo initially */
         h1 {
             font-size: 3em;
             margin-bottom: 10px;
@@ -31,16 +47,32 @@
         p {
             font-size: 1.2em;
             color: #333;
+            padding-right: 1.5em;
+            padding-left: 1.5em;
+        }
+        .icon {
+            width: 30px;
+            margin-right: 10px;
+        }
+        @media (orientation: portrait) {
+            .logo { display: none; }
+            .logo-vertical { display: block; } /* Ensure this is visible in portrait */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="https://github.com/libdebug/libdebug"><img src="./images/libdebug_logo_horiz.png" alt="libdebug Logo" class="logo"></a>
+        <a href="https://github.com/libdebug/libdebug">
+            <img src="./images/libdebug_logo_horiz.jpg" alt="libdebug Logo" class="logo">
+            <img src="./images/libdebug_logo_vert.jpg" alt="libdebug Logo Vertical" class="logo-vertical">
+        </a>
         <p>A Python library to automate the debugging of a binary executable.</p>
-        <!-- add icon for docs and pypi and github -->
-        <a href="https://github.com/libdebug/libdebug" target="_blank"><img src="./images/github-mark/github-mark.png" alt="GitHub" style="width: 30px; margin-right: 10px;"></a>
-        <a href="https://github.com/libdebug/libdebug" target="_blank"><img src="./images/logo-dark.png" alt="Docs" style="width: 30px; margin-right: 10px;"></a>
+        <!-- icons -->
+        <div class="icons-container">
+            <a href="https://github.com/libdebug/libdebug" target="_blank"><img src="./images/github-mark/github-mark.png" alt="GitHub" style="width: 30px; margin-right: 10px;"></a>
+            <a href="https://github.com/libdebug/libdebug" target="_blank"><img src="./images/logo-dark.png" alt="Docs" style="width: 30px; margin-right: 10px;"></a>
+            <a href="https://pypi.org/project/libdebug/" target="_blank"><img src="./images/pypi.png" alt="PyPI" style="width: 30px; margin-right: 10px;"></a>
+        </div>
     </div>
 </body>
 </html>
