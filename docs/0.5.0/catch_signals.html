@@ -422,11 +422,12 @@ document.write(`
                   
   <section id="signals">
 <h1>Signals<a class="headerlink" href="#signals" title="Link to this heading">#</a></h1>
-<p>libdebug supports catching of signals. You can, in fact, execute a callback or pause the script when a specific signal directed at the debugged process is intercepted by the tracer. The following is the signature of the callback function:</p>
+<p>libdebug supports catching of signals. You can, in fact, execute a callback or pause the script when a specific signal directed at the debugged process is intercepted by the tracer.</p>
+<p>The following is the signature of the callback function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">callback</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="n">ThreadContext</span><span class="p">,</span> <span class="n">catcher</span><span class="p">:</span> <span class="n">SignalCatcher</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 </pre></div>
 </div>
-<p>along with the thread where the signal was intercepted from, the callback is also passed the <cite>SignalCatcher</cite> object. </p>
+<p>along with the thread where the signal was intercepted from, the callback is also passed the <cite>SignalCatcher</cite> object.</p>
 <p>When registering a signal catcher, you can either specify the signal number or the conventional signal name (e.g. ‘SIGINT’).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the callback function</span>
 <span class="k">def</span> <span class="nf">catcher_SIGUSR1</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">catcher</span><span class="p">):</span>
@@ -460,13 +461,13 @@ document.write(`
 </pre></div>
 </div>
 <p>Note: You cannot catch <strong>SIGSTOP</strong>, <strong>SIGTRAP</strong>, and <strong>SIGKILL</strong>.</p>
-<p>These signals are internally used by the ptrace and the debugger, or are enforced by the kernel to be passed directly to the child process without the possibility of being caught.</p>
+<p>These signals are internally used by ptrace and the debugger, or are enforced by the kernel to be passed directly to the child process without the possibility of being caught.</p>
 <p>Just like with syscalls, there can be at most one user-defined catcher for each signal.</p>
 <p>If a new catcher is defined for a signal that is already catched or hijacked, the new catcher will replace the old one, and a warning is printed.</p>
 <section id="signal-filtering">
 <h2>Signal Filtering<a class="headerlink" href="#signal-filtering" title="Link to this heading">#</a></h2>
-<p>Instead of setting a catcher on signals, you could want to filter which signals are not to be forwarded to the debugged process during execution.</p>
-<p>By default, all signals not related to the libdebug’s internals are forwarded. For example, SIGSTOP is never passed to the process.</p>
+<p>Instead of setting a catcher on signals, you might want to filter which signals are not to be forwarded to the debugged process during execution.</p>
+<p>By default, all signals not related to libdebug internals are forwarded. For example, SIGSTOP is never passed to the process.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">signals_to_block</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;SIGINT&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -489,7 +490,7 @@ document.write(`
 </pre></div>
 </div>
 <p>Note: Just like with catchers, you cannot hijack <strong>SIGSTOP</strong>, <strong>SIGTRAP</strong>, and <strong>SIGKILL</strong>.</p>
-<p>These signals are internally used by the ptrace and the debugger, or are enforced by the kernel to be passed directly to the child process without the possibility of being caught.</p>
+<p>These signals are internally used by ptrace and the debugger, or are enforced by the kernel to be passed directly to the child process without the possibility of being caught.</p>
 <section id="hijacking-loop-detection">
 <h3>Hijacking Loop Detection<a class="headerlink" href="#hijacking-loop-detection" title="Link to this heading">#</a></h3>
 <p>When carelessly hijacking syscalls, it could happen that loops are created. libdebug automatically performs checks to avoid these situations with signal hijacking and raises an exception if an infinite loop is detected.</p>

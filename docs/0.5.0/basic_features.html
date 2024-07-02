@@ -529,7 +529,7 @@ If the byte-like object is longer than the length you are trying to write, the F
 <p>When accessing memory, you can use both absolute and relative addressing. Absolute addressing is the most common way to access memory, where you provide the exact address you want to access. Relative addressing is a more advanced way to access memory, where you provide an address relative to a base address.
 By default, the memory access in libdebug is done using an hybrid addressing mode. This means that libdebug will try to resolve the address as an absolute address first. If the address is not found, libdebug will try to resolve the address as a relative address, using as base the one of the binary. In this case, a warning will be printed.
 You can force the addressing mode by using the following syntax:</p>
-<p>If you specify a full or a substring of a file name, libdebug will search for the memory map of the file and use the base address of the file as the base address for the relative addressing. If the file is not found or multiple matches are found, an exeption is raised.</p>
+<p>If you specify a full or a substring of a file name, libdebug will search for the memory map of the file and use the base address of the file as the base address for the relative addressing. If the file is not found or multiple matches are found, an exception is raised.</p>
 <p>You can also use the wildcard string “binary” to use the base address of the binary as the base address for the relative addressing. The same behavior is applied if you pass a string corresponding to the binary name.</p>
 </section>
 </section>
@@ -609,6 +609,26 @@ You can force the addressing mode by using the following syntax:</p>
 </pre></div>
 </div>
 </section>
+<section id="post-mortem-analysis">
+<h1>Post Mortem Analysis<a class="headerlink" href="#post-mortem-analysis" title="Link to this heading">#</a></h1>
+<p>You can check at every moment if the whole process (or a specific thread) is dead by using the <cite>dead</cite> property. The syntax is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="ow">not</span> <span class="n">d</span><span class="o">.</span><span class="n">dead</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The process is not dead&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The process is dead&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Moreover, after the process has died, you can check the exit code and the exit signal by using the <cite>exit_code</cite> and <cite>exit_signal</cite> properties, respectively. The syntax is as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">dead</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The process exited with code </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">exit_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">dead</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The process exited with signal </span><span class="si">{</span><span class="n">d</span><span class="o">.</span><span class="n">exit_signal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also access registers after the process has died. This is useful for <em>post-mortem</em> analysis.</p>
+</section>
 <section id="supported-architectures">
 <h1>Supported Architectures<a class="headerlink" href="#supported-architectures" title="Link to this heading">#</a></h1>
 <p>libdebug currently only supports Linux under the x86_64 (AMD64) architecture. Support for other architectures is planned for future releases. Stay tuned.</p>
@@ -684,6 +704,7 @@ You can force the addressing mode by using the following syntax:</p>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#detach-and-gdb-migration">Detach and GDB Migration</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#graceful-termination">Graceful Termination</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#post-mortem-analysis">Post Mortem Analysis</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#supported-architectures">Supported Architectures</a></li>
 </ul>
 

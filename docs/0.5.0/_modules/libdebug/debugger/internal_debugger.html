@@ -1515,7 +1515,7 @@ document.write(`
                 <span class="c1"># If the address was not found and the backing file is not &quot;absolute&quot;,</span>
                 <span class="c1"># we have to assume it is in the main map</span>
                 <span class="n">backing_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_process_full_path</span><span class="p">()</span>
-                <span class="n">liblog</span><span class="o">.</span><span class="n">debugger</span><span class="p">(</span>
+                <span class="n">liblog</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;No backing file specified and no corresponding absolute address found for </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">address</span><span class="p">)</span><span class="si">}</span><span class="s2">. Assuming </span><span class="si">{</span><span class="n">backing_file</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">,</span>
                 <span class="p">)</span>
         <span class="k">elif</span> <span class="p">(</span>
