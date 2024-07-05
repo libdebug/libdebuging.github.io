@@ -18,10 +18,10 @@
             font-family: "Nunito", sans-serif;
         }
         .container {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .icons-container {
             display: flex;
@@ -29,20 +29,18 @@
             align-items: center;
         }
         .logo {
-            max-width: 600px;
-            margin-bottom: 20px;
-            display: none;   /* Hide initially */
+            max-width: 15em;
+            margin-bottom: 0px;
         }
-        .logo-vertical
+        .libdebug-logo-text
         {
-            max-height: 300px;
+            font-size: 5em;
+            font-family: 'Nunito', sans-serif;
+            font-weight: bold;
+            color: #003233;
+            text-decoration: none;
+            margin-top: 0;
             margin-bottom: 20px;
-            display: none;   /* Hide initially */
-        }
-        .logo { display: block; } /* Show horizontal logo initially */
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
         }
         p {
             font-size: 1.2em;
@@ -54,18 +52,19 @@
             width: 30px;
             margin-right: 10px;
         }
-        @media (orientation: portrait) {
-            .logo { display: none; }
-            .logo-vertical { display: block; } /* Ensure this is visible in portrait */
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <a href="https://github.com/libdebug/libdebug">
-            <img src="./images/libdebug_logo_horiz.jpg" alt="libdebug Logo" class="logo">
-            <img src="./images/libdebug_logo_vert.jpg" alt="libdebug Logo Vertical" class="logo-vertical">
+            <div class="logo">
+                <video class="logo" autoplay loop muted playsinline>
+                    <source src="./videos/libdebugging_animation.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
         </a>
+        <h1 class="libdebug-logo-text">libdebug</h1>
         <p>
             A Python library to debug binary executables your own way.
         </p>
