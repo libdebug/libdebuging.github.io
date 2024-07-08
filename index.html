@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="libdebug is a Python library to debug binary executables, your own way">
     <title>libdebug</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <style>
         body {
             display: flex;
@@ -15,18 +15,29 @@
             height: 100vh;
             margin: 0;
             background-color: #ffffef;
-            font-family: "Nunito", sans-serif;
+            font-family: "Nunito", Arial, sans-serif;
         }
         .container {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         }
         .icons-container {
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+        p {
+            font-size: 1.2em;
+            color: #333;
+            padding-right: 1.5em;
+            padding-left: 1.5em;
+        }
+        .icon {
+            width: 2.5em;
+            height: 2.5em;
+            margin-right: 10px;
         }
         .logo {
             max-width: 15em;
@@ -40,19 +51,22 @@
             color: #003233;
             text-decoration: none;
             margin-top: 0;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 1.2em;
-            color: #333;
-            padding-right: 1.5em;
-            padding-left: 1.5em;
-        }
-        .icon {
-            width: 30px;
-            margin-right: 10px;
+            margin-bottom: 0px;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var link = document.createElement('link');
+            link.href = 'https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap';
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            document.head.appendChild(link);
+
+            link.onload = function() {
+                document.body.style.fontFamily = '"Nunito", Arial, sans-serif';
+            };
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -66,13 +80,13 @@
         </a>
         <h1 class="libdebug-logo-text">libdebug</h1>
         <p>
-            A Python library to debug binary executables your own way.
+            A Python library to debug binary executables, your own way.
         </p>
         <!-- icons -->
         <div class="icons-container">
-            <a href="https://github.com/libdebug/libdebug" target="_blank"><img src="./images/github-mark/github-mark.png" alt="GitHub" style="width: 30px; margin-right: 10px;"></a>
-            <a href="https://docs.libdebug.org/" target="_blank"><img src="./images/logo-dark.png" alt="Docs" style="width: 30px; margin-right: 10px;"></a>
-            <a href="https://pypi.org/project/libdebug/" target="_blank"><img src="./images/pypi.png" alt="PyPI" style="width: 30px; margin-right: 10px;"></a>
+            <a href="https://github.com/libdebug/libdebug" target="_blank"><img src="./images/github-mark/github-mark.png" alt="GitHub" class="icon"></a>
+            <a href="https://docs.libdebug.org/" target="_blank"><img src="./images/logo-dark.png" alt="Docs" class="icon"></a>
+            <a href="https://pypi.org/project/libdebug/" target="_blank"><img src="./images/pypi.png" alt="PyPI" class="icon"></a>
         </div>
     </div>
 </body>
